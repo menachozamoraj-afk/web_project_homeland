@@ -1,0 +1,237 @@
+.places {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: 1184px;
+  margin: 92px auto 0;
+  padding: 0 148px;
+  box-sizing: border-box;
+}
+
+/* Diseño Desktop (1280px) */
+.place {
+  display: grid;
+  grid-template-columns: minmax(0, 460fr) minmax(0, 484fr);
+  column-gap: 40px;
+  row-gap: 48px;
+  grid-template-areas:
+    "title credits"
+    "image content"
+    "button content";
+}
+
+.place__title {
+  grid-area: title;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 76px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.place__credits {
+  grid-area: credits;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-self: end;
+}
+
+.place__credits-heading {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  margin: 0 0 8px;
+}
+
+.place__credit {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.place__image-wrapper,
+.place__placeholder {
+  grid-area: image;
+  align-self: start;
+  width: 100%;
+  border-radius: 0px;
+}
+
+.place__image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.place__image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.place__image-wrapper:hover::after {
+  opacity: 1;
+}
+
+.place__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.place__image-wrapper:hover .place__image {
+  transform: scale(1.05);
+}
+
+.place__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  background-color: #3a3d42;
+  color: #9a9da1;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.place__content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.place__text {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.63;
+  color: #ffffff;
+  margin: 0;
+}
+
+.place__button {
+  grid-area: button;
+  display: inline-flex;
+  align-self: start;
+  justify-self: start;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 20px;
+  background: linear-gradient(90deg, #0278fe 0%, #003a7b 99.98%);
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+.place__button:hover {
+  box-shadow: 5px 5px 16px 0 rgba(2, 120, 254, 0.5);
+}
+
+/* Diseño Tablet (768px) */
+@media screen and (max-width: 1023px) {
+  .places {
+    padding: 0 48px;
+    margin-top: 88px;
+    gap: 72px;
+  }
+
+  .place {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .place__title {
+    font-size: 42px;
+    line-height: 46px;
+    margin-bottom: 24px;
+  }
+
+  .place__credits {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+
+  .place__image-wrapper,
+  .place__placeholder {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .place__image,
+  .place__placeholder {
+    aspect-ratio: 4 / 3;
+  }
+
+  .place__content {
+    gap: 24px;
+  }
+
+  .place__text {
+    font-size: 16px;
+    line-height: 1.63;
+  }
+
+  .place__button {
+    margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .places {
+    padding: 0 16px;
+    margin-top: 64px;
+    gap: 48px;
+  }
+
+  .place__title {
+    font-size: 32px;
+    line-height: 35px;
+    margin-bottom: 16px;
+  }
+
+  .place__credits {
+    margin-bottom: 16px;
+  }
+
+  .place__image-wrapper,
+  .place__placeholder {
+    margin-bottom: 16px;
+  }
+
+  .place__button {
+    width: 100%;
+    margin-top: 16px;
+    text-align: center;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+}
